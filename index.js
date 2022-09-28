@@ -12,6 +12,7 @@ function addImage(image=null){
 
     if(!image)
     {
+        askInput();
         image = document.getElementById('myImage');
         //orgImg = image.src
         
@@ -57,10 +58,11 @@ function mouseDown(e) {
 
 function mouseUp() {
     drag = false;
+    context.clearRect(0, 0, canvas.width, canvas.height);
     addImage(orgImg);
     //context.fillStyle=None;)
     //context.clearRect(rect.startX, rect.startY, rect.w, rect.h)
-    //context.clearRect(0, 0, canvas.width, canvas.height);
+    
 
 }
 
@@ -77,5 +79,19 @@ function mouseMove(e) {
 function drawMarker() {
   context.fillRect(rect.startX, rect.startY, rect.w, rect.h);
 }
+
+function askInput()
+{
+    let person = prompt("Please enter image url ");
+    if (person != null && person != "") {
+      document.getElementById("myImage").src = person;
+    }
+    else{
+        document.getElementById("myImage").src = "https://www.invoiceberry.com/img/homepage/free_invoice_templates/new/sub_pages/word/screenshot_invoiceberry_invoice_template_2.png"
+    }
+
+}
+
+//askInput();
 
 addImage();
